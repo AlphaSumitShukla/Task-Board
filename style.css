@@ -1,0 +1,249 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+}
+
+html {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+:root {
+    --bg-color: #000000;
+    --bg-button:#1a1a1a;
+    --primary-text-color: #ffffff;
+    --bg-task-color:#2a2a2a;
+    
+
+    /*padding variable*/
+    --nav-padding:15px 30px;
+    --section-padding:15px 30px;
+    --padding-s:5px;
+    --padding-m:10px;
+    --padding-l:15px;
+    --padding-xl:20px;
+    --padding-xxl:30px;
+
+    /*border-radius*/
+
+    --boder-s:5px;
+    --border-m:10px;
+    --border-l:15px;
+    --border-xl:20px;
+    --border-xxl:30px;
+
+    /* hover effect*/
+    --button-hover:rgb(233, 4, 4);
+    --button-white:white;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--primary-text-color);
+}
+
+main{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+nav{
+    padding: var(--nav-padding);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+nav button{
+    background-color:var(--bg-button) ;
+    border: none;
+    outline: none;
+    color: var(--primary-text-color);
+    padding: var(--padding-m) var(--padding-l);
+    cursor: pointer;
+    border-radius: var(--border-m);
+    transition: all .3s ease-in-out;
+}
+
+nav button:hover{
+    background-color: var(--button-white);
+    color: var(--bg-task-color);
+}
+
+nav button:active{
+    transform: scale(0.95);              
+    background-color: rgb(173, 173, 173);   
+}
+
+section{
+    padding: var(--section-padding);
+    display: flex;
+    justify-content: space-between;
+    flex-grow: 1;
+    gap: var(--padding-xxl);
+}
+
+section .task-column{
+    background-color: var(--bg-button);
+    flex-grow: 1;
+    width: 100%;
+    
+    padding: var(--padding-m);
+    display: flex;
+    flex-direction: column;
+    gap: var(--padding-m);
+    border-radius: var(--border-m);
+    transition: all 0.7s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+section .task-column.hover-over{
+    border: 2px dashed var(--primary-text-color);
+    scale: 1.05;
+
+}
+
+section .task-column .heading{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+section .task-column .task{
+    background-color: var(--bg-task-color);
+    padding: var(--padding-m);
+    border-radius: var(--border-m);
+    display: flex;
+    flex-direction: column;
+    gap: var(--padding-s);
+    cursor: grab;
+}
+
+section .task-column .task button{
+    align-self: flex-end;
+    cursor: pointer;
+    padding: var(--padding-s) var(--padding-m);
+    border-radius: var(--border-m);
+    border: none;
+    outline: none;
+    transition: all .3s ease-in-out;
+}
+
+section .task-column .task button:hover{
+    background-color: var(--button-hover);
+    color: var(--primary-text-color);
+}
+
+section .task-column .task button:active{
+    transform: scale(0.95);              
+    background-color: rgb(180, 0, 0);   
+}
+
+
+.modal{
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    top: 0;
+    left: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.modal.active{
+    display: flex;
+}
+
+.modal .bg{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: rgb(61, 61, 61, 0.404);
+    backdrop-filter: blur(5px);
+}
+
+.modal .center{
+    background-color: var(--bg-button);
+    padding: var(--padding-xxl);
+    border-radius: var(--border-m);
+    display: flex;
+    flex-direction: column;
+    gap: var(--padding-m);
+    z-index: 10;
+}
+
+.modal .center input, .modal .center textarea, .modal .center select{
+    background-color: var(--bg-task-color);
+    border: none;
+    outline: none;
+    color: var(--primary-text-color);
+    padding: var(--padding-m);
+    border-radius: var(--boder-s);
+}
+
+.modal .center button{
+    background-color: var(--bg-task-color);
+    border: none;
+    outline: none;
+    color: var(--primary-text-color);
+    padding: var(--padding-m) var(--padding-l);
+    cursor: pointer;
+    border-radius: var(--border-m);
+    width: fit-content;
+    align-self: center;
+     transition: all .3s ease-in-out;
+}
+
+.modal .center button:hover{
+    background-color: var(--button-white);
+    color: var(--bg-task-color);
+}
+
+.modal .center button:active{
+    transform: scale(0.95);              
+    background-color: rgb(173, 173, 173);   
+}
+
+@media (max-width: 768px) {
+
+    nav{
+        padding: 10px 15px;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    section{
+        flex-direction: column;  
+        gap: 15px;
+        padding: 10px 15px;
+    }
+
+    section .task-column{
+        width: 100%;
+        scale: 1 !important;      
+    }
+
+    section .task-column.hover-over{
+        scale: 1;
+    }
+
+    main{
+        height: auto;
+        min-height: 100vh;
+    }
+
+    .modal .center{
+        width: 90%;
+        padding: 20px;
+    }
+}

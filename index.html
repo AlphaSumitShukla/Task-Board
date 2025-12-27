@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Board</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <main>
+        <nav>
+            <div class="left">DoTask.</div>
+            <div class="right"><button id="toggle-modal">Add new Task</button></div>
+        </nav>
+        <section class="board">
+            <div id="todo" class="task-column">
+                <div class="heading">
+                    <div class="left">To Do</div>
+                    <div class="right">Count</div>
+                </div>
+            </div>
+            <div id="Progress" class="task-column">
+                <div class="heading">
+                    <div class="left">In Progress</div>
+                    <div class="right">Count</div>
+                </div>
+            </div>
+            <div id="done" class="task-column">
+                <div class="heading">
+                    <div class="left">Done</div>
+                    <div class="right">Count</div>
+                </div>
+            </div>
+        </section>
+       
+    </main>
+
+    <div class="modal add-new-task">
+        <div class="bg"></div>
+        <div class="center">
+        <input type="text" id="task-title" placeholder="Task-Title" />
+        <textarea id="task-desc-input"  placeholder="Task Description"></textarea>
+        <button id="add-new-task" class="add-task-btn">Add Task</button>
+        </div>
+    </div>
+</body>
+     <script src="script.js"></script>
+</html>
